@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0B1118;
+    color: #E2E8F0;
+  }
+}
+
+/* Custom solid corporate utilities (no gradients per user specification) */
+.bg-stage-navy {
+  background-color: #0B1118;
+}
+
+.bg-stage-panel {
+  background-color: #111A24;
+}
+
+.bg-stage-surface {
+  background-color: #172230;
+}
+
+.bg-stage-orange {
+  background-color: #FF6B00;
+}
+
+.text-stage-orange {
+  color: #FF6B00;
+}
+
+.border-stage-border {
+  border-color: #223142;
+}
+
+.border-stage-orange {
+  border-color: #FF6B00;
+}

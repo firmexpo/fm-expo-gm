@@ -1,0 +1,6 @@
+{
+  "name": "FirmExpo - The Digital Stage for Production Businesses",
+  "description": "A digital conventional hub for production businesses, bringing manufacturers onto a powerful exhibition stage to showcase capabilities, technology, and products.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
