@@ -4,11 +4,12 @@ import { HeroSection } from './components/HeroSection';
 import { VisualJourney } from './components/VisualJourney';
 import { ExhibitionHalls } from './components/ExhibitionHalls';
 import { BlueprintSpecsSection } from './components/BlueprintSpecsSection';
+import { ExhibitionInsights } from './components/ExhibitionInsights';
 import { BrandKitStudio } from './components/BrandKitStudio';
 import { RegisterBoothSection } from './components/RegisterBoothSection';
 import { Footer } from './components/Footer';
 import { CompanyBoothModal } from './components/CompanyBoothModal';
-import { ProductionCompany } from './data/companies';
+import { PRODUCTION_COMPANIES, ProductionCompany } from './data/companies';
 
 export default function App() {
   const [selectedCompany, setSelectedCompany] = useState<ProductionCompany | null>(null);
@@ -22,6 +23,15 @@ export default function App() {
 
   const handleOpenRegister = () => {
     handleNavigate('register-booth');
+  };
+
+  const handleSelectBoothDetail = (companyId: string) => {
+    const found = PRODUCTION_COMPANIES.find((c) => c.id === companyId);
+    if (found) {
+      setSelectedCompany(found);
+    } else {
+      handleNavigate('exhibition-halls');
+    }
   };
 
   return (
@@ -38,6 +48,7 @@ export default function App() {
           onExploreBooths={() => handleNavigate('exhibition-halls')}
           onRegisterClick={handleOpenRegister}
           onOpenBrandKit={() => handleNavigate('brand-kit')}
+          onSelectBoothDetail={handleSelectBoothDetail}
         />
 
         {/* 5-Phase Visual Journey: Business → Visibility → Presentation → Opportunity → Growth */}
@@ -51,6 +62,9 @@ export default function App() {
 
         {/* Blueprint & 800x600 Dimensional Layout Architecture */}
         <BlueprintSpecsSection />
+
+        {/* Data-Driven Exhibition Insights Section (Recharts) */}
+        <ExhibitionInsights />
 
         {/* High-Resolution Social-Media-Ready Brand Visual Studio */}
         <BrandKitStudio />

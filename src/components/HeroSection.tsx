@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import { Play, Sparkles, SlidersHorizontal, ArrowRight, ShieldCheck, Factory, Box, Compass } from 'lucide-react';
 import heroVisualPath from '../assets/images/hero_firmexpo_brand_stage_1790276850445.jpg';
 import hallVisualPath from '../assets/images/firmexpo_exhibition_hall_1790276861742.jpg';
+import { InteractiveStage } from './InteractiveStage';
 import { Stage3DCanvas } from './Stage3DCanvas';
 
 interface HeroSectionProps {
   onExploreBooths: () => void;
   onRegisterClick: () => void;
   onOpenBrandKit: () => void;
+  onSelectBoothDetail?: (companyId: string) => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onExploreBooths,
   onRegisterClick,
   onOpenBrandKit,
+  onSelectBoothDetail,
 }) => {
   const [activeStageView, setActiveStageView] = useState<'3d-stage' | 'brand' | 'hall' | 'blueprint'>('3d-stage');
   const [stageSpotlight, setStageSpotlight] = useState(true);
@@ -143,10 +146,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Main Visual Display Canvas */}
           <div className="relative aspect-[16/9] w-full bg-[#080D13] overflow-hidden min-h-[440px] sm:min-h-[540px]">
-            {/* View 0: Three.js Interactive 3D Stage */}
+            {/* View 0: React Three Fiber & Drei Interactive 3D Stage */}
             {activeStageView === '3d-stage' && (
               <div className="w-full h-full">
-                <Stage3DCanvas onSelectBooth={onExploreBooths} />
+                <InteractiveStage
+                  onSelectBooth={(booth) => {
+                    if (onSelectBoothDetail && booth.companyId) {
+                      onSelectBoothDetail(booth.companyId);
+                    } else {
+                      onExploreBooths();
+                    }
+                  }}
+                />
               </div>
             )}
 

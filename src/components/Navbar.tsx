@@ -52,6 +52,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, onOpenRegister }) =>
           </button>
           <button
             type="button"
+            onClick={() => onNavigate('exhibition-insights')}
+            className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+          >
+            Insights
+          </button>
+          <button
+            type="button"
             onClick={() => onNavigate('brand-kit')}
             className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
           >

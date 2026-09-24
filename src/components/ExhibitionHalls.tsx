@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Filter, Search, Building2, MapPin, Award, ExternalLink, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Filter, Search, Building2, MapPin, Award, ExternalLink, ChevronRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { PRODUCTION_COMPANIES, ProductionCompany } from '../data/companies';
 import { DummyImage800x600 } from './DummyImage800x600';
 import cncPhotoPath from '../assets/images/firmexpo_cnc_precision_1790276873230.jpg';
@@ -143,9 +144,19 @@ export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
             const photo = company.sector === 'CNC Machining' ? cncPhotoPath : hallPhotoPath;
 
             return (
-              <div
+              <motion.div
                 key={company.id}
-                className="flex flex-col bg-[#111A24] border border-[#223142] rounded-lg overflow-hidden transition-colors hover:border-[#384C62]"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  boxShadow: '0 0 25px rgba(255, 107, 0, 0.22), 0 10px 30px rgba(0, 0, 0, 0.5)',
+                  borderColor: '#FF6B00',
+                  transition: { duration: 0.22, ease: 'easeOut' },
+                }}
+                className="group flex flex-col bg-[#111A24] border border-[#223142] rounded-lg overflow-hidden transition-colors"
               >
                 {/* 800x600 Standardized Dummy Image Frame */}
                 <div className="relative">
@@ -172,7 +183,7 @@ export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
                     </div>
 
                     {/* Company Name */}
-                    <h3 className="text-lg font-bold text-white tracking-tight hover:text-[#FF6B00] transition-colors">
+                    <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-[#FF6B00] transition-colors">
                       {company.name}
                     </h3>
 
@@ -205,14 +216,14 @@ export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
                     <button
                       type="button"
                       onClick={() => onSelectCompany(company)}
-                      className="w-full py-2 px-3 text-xs font-semibold text-white bg-[#172230] hover:bg-[#1E2D3E] border border-[#293B4E] rounded transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="w-full py-2 px-3 text-xs font-semibold text-white bg-[#172230] group-hover:bg-[#FF6B00] border border-[#293B4E] group-hover:border-[#FF6B00] rounded transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-none"
                     >
                       <span>Enter Digital Booth</span>
-                      <ChevronRight className="w-3.5 h-3.5 text-[#FF6B00]" />
+                      <ChevronRight className="w-3.5 h-3.5 text-[#FF6B00] group-hover:text-white transition-colors" />
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
