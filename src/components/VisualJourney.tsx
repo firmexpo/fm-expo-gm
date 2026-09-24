@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, ChevronRight, Layers, TrendingUp, Users, Target, Shield } from 'lucide-react';
 import { DummyImage800x600 } from './DummyImage800x600';
 import cncPhotoPath from '../assets/images/firmexpo_cnc_precision_1790276873230.jpg';
@@ -126,102 +127,115 @@ export const VisualJourney: React.FC = () => {
         </div>
 
         {/* Detailed Stage Transformation Canvas */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#111A24] border border-[#223142] p-6 sm:p-8 rounded-lg">
-          
-          {/* Left Column: Stage Narrative */}
-          <div className="lg:col-span-6 flex flex-col justify-between h-full">
-            <div>
-              {/* Unboxed Metadata Header */}
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-3">
-                <span className="text-[#FF6B00] font-bold">PHASE {activeStep.stepNumber}</span>
-                <span aria-hidden="true">·</span>
-                <span className="uppercase">{activeStep.id.toUpperCase()}</span>
-                <span aria-hidden="true">·</span>
-                <span>FIRMEXPO ECOSYSTEM</span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-                {activeStep.title}
-              </h3>
-              <p className="text-sm font-medium text-[#FF6B00] mt-1">
-                {activeStep.subtitle}
-              </p>
-
-              {/* Challenge vs Solution comparison */}
-              <div className="mt-6 space-y-4">
-                <div className="p-4 bg-[#0B1118] border border-[#1E293B] rounded">
-                  <div className="text-xs font-mono uppercase text-slate-400 mb-1">
-                    The Traditional Limitation:
+        <div className="bg-[#111A24] border border-[#223142] p-6 sm:p-8 rounded-lg overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            >
+              {/* Left Column: Stage Narrative */}
+              <div className="lg:col-span-6 flex flex-col justify-between h-full">
+                <div>
+                  {/* Unboxed Metadata Header */}
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-3">
+                    <span className="text-[#FF6B00] font-bold">PHASE {activeStep.stepNumber}</span>
+                    <span aria-hidden="true">·</span>
+                    <span className="uppercase">{activeStep.id.toUpperCase()}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>FIRMEXPO ECOSYSTEM</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    {activeStep.challenge}
-                  </p>
-                </div>
 
-                <div className="p-4 bg-[#14202C] border-l-2 border-[#FF6B00] border-y border-r border-[#223142] rounded-r">
-                  <div className="text-xs font-mono uppercase text-[#FF6B00] mb-1 font-semibold">
-                    The FirmExpo Digital Stage Transformation:
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug font-heading">
+                    {activeStep.title}
+                  </h3>
+                  <p className="text-sm font-semibold text-[#FF6B00] mt-1">
+                    {activeStep.subtitle}
+                  </p>
+
+                  {/* Challenge vs Solution comparison */}
+                  <div className="mt-6 space-y-4">
+                    <div className="p-4 bg-[#0B1118] border border-[#1E293B] rounded">
+                      <div className="text-xs font-mono uppercase text-slate-300 font-semibold mb-1">
+                        The Traditional Limitation:
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {activeStep.challenge}
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-[#14202C] border-l-2 border-[#FF6B00] border-y border-r border-[#223142] rounded-r">
+                      <div className="text-xs font-mono uppercase text-[#FF6B00] mb-1 font-bold">
+                        The FirmExpo Digital Stage Transformation:
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-100 leading-relaxed">
+                        {activeStep.solutionOnStage}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    {activeStep.solutionOnStage}
-                  </p>
+                </div>
+
+                {/* Unlocked Metric Callout */}
+                <div className="mt-8 pt-6 border-t border-[#1E2A3A] flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-black text-white font-mono tabular-nums font-heading">
+                      {activeStep.unlockedMetric}
+                    </div>
+                    <div className="text-xs text-slate-300 mt-0.5 max-w-sm">
+                      {activeStep.unlockedDetail}
+                    </div>
+                  </div>
+
+                  {/* Step Navigation Controls */}
+                  <div className="flex items-center gap-2">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      type="button"
+                      disabled={activeStepIndex === 0}
+                      onClick={() => setActiveStepIndex((prev) => Math.max(0, prev - 1))}
+                      className="px-3 py-1.5 text-xs font-mono bg-[#16212E] hover:bg-[#1E2E40] text-slate-200 disabled:opacity-30 rounded border border-[#26374A] cursor-pointer"
+                    >
+                      Previous
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      type="button"
+                      disabled={activeStepIndex === JOURNEY_STEPS.length - 1}
+                      onClick={() => setActiveStepIndex((prev) => Math.min(JOURNEY_STEPS.length - 1, prev + 1))}
+                      className="px-3.5 py-1.5 text-xs font-mono bg-[#FF6B00] hover:bg-[#E55F00] text-white disabled:opacity-30 rounded cursor-pointer font-bold"
+                    >
+                      Next Phase
+                    </motion.button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Unlocked Metric Callout */}
-            <div className="mt-8 pt-6 border-t border-[#1E2A3A] flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <div className="text-2xl font-black text-white font-mono tabular-nums">
-                  {activeStep.unlockedMetric}
+              {/* Right Column: 800x600 Standardized Visual Blueprint & Stage Render */}
+              <div className="lg:col-span-6">
+                <div className="p-2 bg-[#090F16] border border-[#1E2A38] rounded shadow-xl">
+                  <DummyImage800x600
+                    title={activeStep.title}
+                    subtitle={`JOURNEY PHASE ${activeStep.stepNumber} // STAGE SPEC`}
+                    sector="TRANSFORMATION ENGINE"
+                    imageSrc={cncPhotoPath}
+                    showToggle={true}
+                  />
+                  <div className="mt-2.5 px-2 py-1.5 flex items-center justify-between text-[11px] font-mono text-slate-300">
+                    <span className="flex items-center gap-1.5">
+                      <Layers className="w-3 h-3 text-[#FF6B00]" />
+                      <span>800 × 600 PX UNIFORM EXHIBITION ASSET</span>
+                    </span>
+                    <span className="text-slate-400">ISO 9001 / AS9100D</span>
+                  </div>
                 </div>
-                <div className="text-xs text-slate-400 mt-0.5 max-w-sm">
-                  {activeStep.unlockedDetail}
-                </div>
               </div>
-
-              {/* Step Navigation Controls */}
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  disabled={activeStepIndex === 0}
-                  onClick={() => setActiveStepIndex((prev) => Math.max(0, prev - 1))}
-                  className="px-3 py-1.5 text-xs font-mono bg-[#16212E] hover:bg-[#1E2E40] text-slate-300 disabled:opacity-30 rounded border border-[#26374A] cursor-pointer"
-                >
-                  Previous
-                </button>
-                <button
-                  type="button"
-                  disabled={activeStepIndex === JOURNEY_STEPS.length - 1}
-                  onClick={() => setActiveStepIndex((prev) => Math.min(JOURNEY_STEPS.length - 1, prev + 1))}
-                  className="px-3.5 py-1.5 text-xs font-mono bg-[#FF6B00] hover:bg-[#E55F00] text-white disabled:opacity-30 rounded cursor-pointer font-semibold"
-                >
-                  Next Phase
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: 800x600 Standardized Visual Blueprint & Stage Render */}
-          <div className="lg:col-span-6">
-            <div className="p-2 bg-[#090F16] border border-[#1E2A38] rounded">
-              <DummyImage800x600
-                title={activeStep.title}
-                subtitle={`JOURNEY PHASE ${activeStep.stepNumber} // STAGE SPEC`}
-                sector="TRANSFORMATION ENGINE"
-                imageSrc={cncPhotoPath}
-                showToggle={true}
-              />
-              <div className="mt-2.5 px-2 py-1.5 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span className="flex items-center gap-1.5">
-                  <Layers className="w-3 h-3 text-[#FF6B00]" />
-                  <span>800 × 600 PX UNIFORM EXHIBITION ASSET</span>
-                </span>
-                <span className="text-slate-500">ISO 9001 / AS9100D</span>
-              </div>
-            </div>
-          </div>
-
+            </motion.div>
+          </AnimatePresence>
         </div>
 
       </div>

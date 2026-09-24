@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Play, Sparkles, SlidersHorizontal, ArrowRight, ShieldCheck, Factory, Box, Compass } from 'lucide-react';
 import heroVisualPath from '../assets/images/hero_firmexpo_brand_stage_1790276850445.jpg';
 import hallVisualPath from '../assets/images/firmexpo_exhibition_hall_1790276861742.jpg';
@@ -25,58 +26,77 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section id="stage-visual" className="relative w-full bg-[#0B1118] text-white pt-8 pb-16 lg:pt-12 lg:pb-24 border-b border-[#1E293B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Kicker - Solid and Unboxed, No Pills */}
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-4 tracking-wider uppercase">
+        {/* Top Kicker - Solid and Unboxed with subtle fade */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-4 tracking-wider uppercase"
+        >
           <span className="text-[#FF6B00] font-semibold">GLOBAL B2B CONVENTIONAL HUB</span>
           <span aria-hidden="true">·</span>
           <span>EST. 2026</span>
           <span aria-hidden="true">·</span>
           <span>THREE.JS ARCHITECTURAL STAGING</span>
-        </div>
+        </motion.div>
 
         {/* Primary Headline & Supporting Copy */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
-          <div className="lg:col-span-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-[1.08] text-balance">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-8"
+          >
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-[1.08] text-balance font-heading">
               YOUR BUSINESS <br />
               <span className="text-[#FF6B00]">ON DISPLAY.</span>
             </h1>
-            <p className="mt-4 text-lg sm:text-xl font-medium text-slate-300 max-w-2xl leading-relaxed">
+            <p className="mt-4 text-lg sm:text-xl font-medium text-slate-200 max-w-2xl leading-relaxed">
               The digital stage for production businesses.
             </p>
-            <p className="mt-2 text-sm sm:text-base text-slate-400 max-w-2xl leading-normal">
+            <p className="mt-2 text-sm sm:text-base text-slate-300 max-w-2xl leading-normal">
               Transforming overlooked manufacturers into globally visible, highly presented enterprises. Where CNC precision, heavy engineering, medical implants, and advanced fabricators showcase real capabilities to world-class procurement teams.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right Action & Verification Pod */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-4 flex flex-col gap-3"
+          >
             <div className="flex items-center gap-3">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={onRegisterClick}
-                className="w-full py-3.5 px-6 text-sm font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors text-center cursor-pointer uppercase tracking-wider"
+                className="w-full py-3.5 px-6 text-sm font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors text-center cursor-pointer uppercase tracking-wider font-heading"
               >
                 Exhibit Your Business
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={onExploreBooths}
                 className="py-3.5 px-4 text-sm font-semibold text-slate-200 bg-[#16212E] hover:bg-[#1E2E40] border border-[#2B3E54] rounded transition-colors cursor-pointer flex items-center gap-2 whitespace-nowrap"
               >
                 <span>Tour Hub</span>
                 <ArrowRight className="w-4 h-4 text-[#FF6B00]" />
-              </button>
+              </motion.button>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-400 border border-[#1E2A38] bg-[#0E1620] px-3.5 py-2.5 rounded">
-              <span className="flex items-center gap-1.5 text-slate-300">
+            <div className="flex items-center justify-between text-xs text-slate-300 border border-[#1E2A38] bg-[#0E1620] px-3.5 py-2.5 rounded">
+              <span className="flex items-center gap-1.5 text-slate-200">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#FF6B00]" />
                 Interactive 3D Stage Engine
               </span>
               <span className="font-mono tabular-nums text-slate-400">800×600 LAYOUT SPEC</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Master Exhibition Stage Visual Frame */}
