@@ -79,7 +79,7 @@ export const VisualJourney: React.FC = () => {
   const activeStep = JOURNEY_STEPS[activeStepIndex];
 
   return (
-    <section id="journey" className="w-full bg-[#0E1622] py-16 sm:py-20 border-b border-[#1E293B]">
+    <section id="journey" className="w-full bg-slate-50 dark:bg-[#0E1622] py-16 sm:py-20 border-b border-slate-200 dark:border-[#1E293B] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -87,16 +87,16 @@ export const VisualJourney: React.FC = () => {
           <div className="text-xs font-mono uppercase tracking-widest text-[#FF6B00] mb-2 font-semibold">
             THE STRATEGIC TRANSFORMATION
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight uppercase font-heading">
             The FirmExpo Visual Journey
           </h2>
-          <p className="mt-3 text-slate-300 max-w-2xl text-base">
+          <p className="mt-3 text-slate-600 dark:text-slate-300 max-w-2xl text-base">
             How production businesses transition from ordinary, overlooked operations into celebrated, high-capacity global manufacturing partners.
           </p>
         </div>
 
         {/* 5-Step Pipeline Progress Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 p-1.5 bg-[#090F16] border border-[#202E3E] rounded-lg mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 p-1.5 bg-slate-200/80 dark:bg-[#090F16] border border-slate-300 dark:border-[#202E3E] rounded-lg mb-10">
           {JOURNEY_STEPS.map((step, idx) => {
             const isActive = idx === activeStepIndex;
             return (
@@ -106,8 +106,8 @@ export const VisualJourney: React.FC = () => {
                 onClick={() => setActiveStepIndex(idx)}
                 className={`flex flex-col text-left p-3 rounded transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#182330] border border-[#FF6B00] text-white shadow-none'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-[#121B26] border border-transparent'
+                    ? 'bg-white dark:bg-[#182330] border border-[#FF6B00] text-slate-900 dark:text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#121B26] border border-transparent'
                 }`}
               >
                 <div className="flex items-center justify-between text-xs font-mono mb-1">
@@ -115,7 +115,7 @@ export const VisualJourney: React.FC = () => {
                     {step.stepNumber}
                   </span>
                   {idx < JOURNEY_STEPS.length - 1 && (
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-600 hidden sm:inline" />
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600 hidden sm:inline" />
                   )}
                 </div>
                 <div className="text-xs sm:text-sm font-semibold truncate capitalize">
@@ -127,7 +127,7 @@ export const VisualJourney: React.FC = () => {
         </div>
 
         {/* Detailed Stage Transformation Canvas */}
-        <div className="bg-[#111A24] border border-[#223142] p-6 sm:p-8 rounded-lg overflow-hidden">
+        <div className="bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] p-6 sm:p-8 rounded-lg overflow-hidden shadow-xs dark:shadow-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep.id}
@@ -141,7 +141,7 @@ export const VisualJourney: React.FC = () => {
               <div className="lg:col-span-6 flex flex-col justify-between h-full">
                 <div>
                   {/* Unboxed Metadata Header */}
-                  <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-3">
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">
                     <span className="text-[#FF6B00] font-bold">PHASE {activeStep.stepNumber}</span>
                     <span aria-hidden="true">·</span>
                     <span className="uppercase">{activeStep.id.toUpperCase()}</span>
@@ -149,7 +149,7 @@ export const VisualJourney: React.FC = () => {
                     <span>FIRMEXPO ECOSYSTEM</span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug font-heading">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug font-heading">
                     {activeStep.title}
                   </h3>
                   <p className="text-sm font-semibold text-[#FF6B00] mt-1">
@@ -158,20 +158,20 @@ export const VisualJourney: React.FC = () => {
 
                   {/* Challenge vs Solution comparison */}
                   <div className="mt-6 space-y-4">
-                    <div className="p-4 bg-[#0B1118] border border-[#1E293B] rounded">
-                      <div className="text-xs font-mono uppercase text-slate-300 font-semibold mb-1">
+                    <div className="p-4 bg-slate-50 dark:bg-[#0B1118] border border-slate-200 dark:border-[#1E293B] rounded">
+                      <div className="text-xs font-mono uppercase text-slate-700 dark:text-slate-300 font-semibold mb-1">
                         The Traditional Limitation:
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                         {activeStep.challenge}
                       </p>
                     </div>
 
-                    <div className="p-4 bg-[#14202C] border-l-2 border-[#FF6B00] border-y border-r border-[#223142] rounded-r">
+                    <div className="p-4 bg-orange-50/60 dark:bg-[#14202C] border-l-2 border-[#FF6B00] border-y border-r border-orange-200/80 dark:border-[#223142] rounded-r">
                       <div className="text-xs font-mono uppercase text-[#FF6B00] mb-1 font-bold">
                         The FirmExpo Digital Stage Transformation:
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-100 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-relaxed">
                         {activeStep.solutionOnStage}
                       </p>
                     </div>
@@ -179,12 +179,12 @@ export const VisualJourney: React.FC = () => {
                 </div>
 
                 {/* Unlocked Metric Callout */}
-                <div className="mt-8 pt-6 border-t border-[#1E2A3A] flex flex-wrap items-center justify-between gap-4">
+                <div className="mt-8 pt-6 border-t border-slate-200 dark:border-[#1E2A3A] flex flex-wrap items-center justify-between gap-4">
                   <div>
-                    <div className="text-2xl sm:text-3xl font-black text-white font-mono tabular-nums font-heading">
+                    <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-mono tabular-nums font-heading">
                       {activeStep.unlockedMetric}
                     </div>
-                    <div className="text-xs text-slate-300 mt-0.5 max-w-sm">
+                    <div className="text-xs text-slate-500 dark:text-slate-300 mt-0.5 max-w-sm">
                       {activeStep.unlockedDetail}
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export const VisualJourney: React.FC = () => {
                       type="button"
                       disabled={activeStepIndex === 0}
                       onClick={() => setActiveStepIndex((prev) => Math.max(0, prev - 1))}
-                      className="px-3 py-1.5 text-xs font-mono bg-[#16212E] hover:bg-[#1E2E40] text-slate-200 disabled:opacity-30 rounded border border-[#26374A] cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-mono bg-slate-100 dark:bg-[#16212E] hover:bg-slate-200 dark:hover:bg-[#1E2E40] text-slate-700 dark:text-slate-200 disabled:opacity-30 rounded border border-slate-300 dark:border-[#26374A] cursor-pointer"
                     >
                       Previous
                     </motion.button>
@@ -207,7 +207,7 @@ export const VisualJourney: React.FC = () => {
                       type="button"
                       disabled={activeStepIndex === JOURNEY_STEPS.length - 1}
                       onClick={() => setActiveStepIndex((prev) => Math.min(JOURNEY_STEPS.length - 1, prev + 1))}
-                      className="px-3.5 py-1.5 text-xs font-mono bg-[#FF6B00] hover:bg-[#E55F00] text-white disabled:opacity-30 rounded cursor-pointer font-bold"
+                      className="px-3.5 py-1.5 text-xs font-mono bg-[#FF6B00] hover:bg-[#E55F00] text-white disabled:opacity-30 rounded cursor-pointer font-bold shadow-xs"
                     >
                       Next Phase
                     </motion.button>
@@ -217,7 +217,7 @@ export const VisualJourney: React.FC = () => {
 
               {/* Right Column: 800x600 Standardized Visual Blueprint & Stage Render */}
               <div className="lg:col-span-6">
-                <div className="p-2 bg-[#090F16] border border-[#1E2A38] rounded shadow-xl">
+                <div className="p-2 bg-slate-900 border border-slate-700 dark:border-[#1E2A38] rounded shadow-xl">
                   <DummyImage800x600
                     title={activeStep.title}
                     subtitle={`JOURNEY PHASE ${activeStep.stepNumber} // STAGE SPEC`}

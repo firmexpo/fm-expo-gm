@@ -1,5 +1,6 @@
 import React from 'react';
 import { FirmExpoLogo } from './FirmExpoLogo';
+import { useTheme } from '../context/ThemeContext';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -7,8 +8,10 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenRegister }) => {
+  const { theme } = useTheme();
+
   return (
-    <footer className="w-full bg-[#080D13] border-t border-[#1C2836] text-slate-400 text-xs">
+    <footer className="w-full bg-slate-900 dark:bg-[#080D13] border-t border-slate-800 dark:border-[#1C2836] text-slate-300 dark:text-slate-400 text-xs transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         
         {/* Main Footer Row */}
@@ -17,10 +20,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenRegister }) =>
           {/* Col 1: Brand & Tagline */}
           <div className="md:col-span-5 space-y-4">
             <FirmExpoLogo variant="on-dark" size="md" showTagline={true} />
-            <p className="text-slate-400 text-xs sm:text-sm max-w-sm leading-relaxed mt-2">
+            <p className="text-slate-300 dark:text-slate-400 text-xs sm:text-sm max-w-sm leading-relaxed mt-2">
               The digital conventional hub for production businesses. Connecting precision manufacturing, engineering, and industrial enterprises to global procurement decision-makers.
             </p>
-            <div className="text-[11px] font-mono text-slate-500">
+            <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
               PLATFORM OPERATED BY FIRMEXPO GLOBAL CONVENTIONAL NETWORK
             </div>
           </div>
@@ -70,6 +73,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenRegister }) =>
               <li>
                 <button
                   type="button"
+                  onClick={() => onNavigate('exhibition-insights')}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Platform Insights & Growth
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
                   onClick={() => onNavigate('brand-kit')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
@@ -84,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenRegister }) =>
             <div className="text-xs font-mono uppercase text-white font-semibold tracking-wider">
               Audited Sectors
             </div>
-            <div className="grid grid-cols-2 gap-2 text-xs text-slate-400">
+            <div className="grid grid-cols-2 gap-2 text-xs text-slate-300 dark:text-slate-400">
               <div>CNC Machining & EDM</div>
               <div>Industrial Machinery</div>
               <div>Steel, Metals & Forging</div>
@@ -97,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenRegister }) =>
               <button
                 type="button"
                 onClick={onOpenRegister}
-                className="px-3.5 py-1.5 text-xs font-mono uppercase bg-[#16212E] hover:bg-[#1E2E40] text-slate-200 border border-[#2B3E52] rounded transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 text-xs font-mono uppercase bg-slate-800 dark:bg-[#16212E] hover:bg-slate-700 dark:hover:bg-[#1E2E40] text-slate-200 border border-slate-700 dark:border-[#2B3E52] rounded transition-colors cursor-pointer"
               >
                 Apply for Booth Reservation
               </button>
@@ -107,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenRegister }) =>
         </div>
 
         {/* Bottom Bar: Copyright & Unboxed Separation */}
-        <div className="mt-12 pt-6 border-t border-[#16202C] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
+        <div className="mt-12 pt-6 border-t border-slate-800 dark:border-[#16202C] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400 dark:text-slate-500 font-mono">
           <div>
             © {new Date().getFullYear()} FirmExpo. All rights reserved. Your business on display.
           </div>

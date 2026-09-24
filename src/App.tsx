@@ -35,7 +35,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B1118] text-[#E2E8F0] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white">
+    <div className="min-h-screen bg-white dark:bg-[#0B1118] text-slate-900 dark:text-[#E2E8F0] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white transition-colors">
       {/* 1-Row 3-Zone Top Bar Navigation */}
       <Navbar
         onNavigate={handleNavigate}

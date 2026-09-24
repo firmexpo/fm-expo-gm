@@ -81,7 +81,7 @@ export const ExhibitionInsights: React.FC = () => {
   const [metricTab, setMetricTab] = useState<'facilities' | 'rfqs' | 'volume'>('facilities');
 
   return (
-    <section id="exhibition-insights" className="w-full bg-[#0E1622] py-16 sm:py-20 border-b border-[#1E293B]">
+    <section id="exhibition-insights" className="w-full bg-slate-50 dark:bg-[#0E1622] py-16 sm:py-20 border-b border-slate-200 dark:border-[#1E293B] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -90,15 +90,15 @@ export const ExhibitionInsights: React.FC = () => {
             <div className="text-xs font-mono uppercase tracking-widest text-[#FF6B00] mb-2 font-semibold">
               QUANTITATIVE ECOSYSTEM RIGOR
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight uppercase font-heading">
               Exhibition Platform Insights
             </h2>
-            <p className="mt-2 text-slate-300 max-w-2xl text-sm sm:text-base">
+            <p className="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
               Verified analytics tracking production business onboarding, represented industrial categories, and global enterprise procurement traffic across the 365-day conventional hub.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 text-xs font-mono text-slate-400 bg-[#111A24] border border-[#223142] px-4 py-2.5 rounded shrink-0">
+          <div className="flex items-center gap-3 text-xs font-mono text-slate-600 dark:text-slate-400 bg-white dark:bg-[#111A24] border border-slate-300 dark:border-[#223142] px-4 py-2.5 rounded shrink-0 shadow-2xs">
             <ShieldCheck className="w-4 h-4 text-[#FF6B00]" />
             <span>AUDITED CONVENTIONAL DATA · UPDATED Q2 2026</span>
           </div>
@@ -106,25 +106,25 @@ export const ExhibitionInsights: React.FC = () => {
 
         {/* 4 Quantitative Top Metric Anchors */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <div className="p-5 bg-[#111A24] border border-[#223142] rounded-lg">
-            <div className="text-xs text-slate-400 font-mono uppercase">Staged Facilities</div>
-            <div className="text-3xl font-black font-mono text-white mt-1 tabular-nums">1,420+</div>
+          <div className="p-5 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] rounded-lg shadow-2xs dark:shadow-none">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">Staged Facilities</div>
+            <div className="text-3xl font-black font-mono text-slate-900 dark:text-white mt-1 tabular-nums font-heading">1,420+</div>
             <div className="text-xs text-[#FF6B00] font-mono mt-1 font-semibold">↑ +122% YoY Expansion</div>
           </div>
-          <div className="p-5 bg-[#111A24] border border-[#223142] rounded-lg">
-            <div className="text-xs text-slate-400 font-mono uppercase">Direct Technical RFQs</div>
-            <div className="text-3xl font-black font-mono text-[#FF6B00] mt-1 tabular-nums">9,940+</div>
-            <div className="text-xs text-slate-400 font-mono mt-1">Zero intermediary margins</div>
+          <div className="p-5 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] rounded-lg shadow-2xs dark:shadow-none">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">Direct Technical RFQs</div>
+            <div className="text-3xl font-black font-mono text-[#FF6B00] mt-1 tabular-nums font-heading">9,940+</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1">Zero intermediary margins</div>
           </div>
-          <div className="p-5 bg-[#111A24] border border-[#223142] rounded-lg">
-            <div className="text-xs text-slate-400 font-mono uppercase">Enterprise Procurement Teams</div>
-            <div className="text-3xl font-black font-mono text-white mt-1 tabular-nums">11,890</div>
-            <div className="text-xs text-slate-400 font-mono mt-1">From aerospace, medical & energy</div>
+          <div className="p-5 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] rounded-lg shadow-2xs dark:shadow-none">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">Enterprise Procurement Teams</div>
+            <div className="text-3xl font-black font-mono text-slate-900 dark:text-white mt-1 tabular-nums font-heading">11,890</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1">From aerospace, medical & energy</div>
           </div>
-          <div className="p-5 bg-[#111A24] border border-[#223142] rounded-lg">
-            <div className="text-xs text-slate-400 font-mono uppercase">Estimated Inbound Value</div>
-            <div className="text-3xl font-black font-mono text-white mt-1 tabular-nums">$318M</div>
-            <div className="text-xs text-slate-400 font-mono mt-1">Contract allocations staged</div>
+          <div className="p-5 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] rounded-lg shadow-2xs dark:shadow-none">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">Estimated Inbound Value</div>
+            <div className="text-3xl font-black font-mono text-slate-900 dark:text-white mt-1 tabular-nums font-heading">$318M</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1">Contract allocations staged</div>
           </div>
         </div>
 
@@ -132,26 +132,26 @@ export const ExhibitionInsights: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
           
           {/* Chart 1: Participation Growth Over Time (8 Cols) */}
-          <div className="lg:col-span-8 bg-[#111A24] border border-[#223142] p-6 rounded-lg">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#1E293B]">
+          <div className="lg:col-span-8 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] p-6 rounded-lg shadow-2xs dark:shadow-none">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-[#1E293B]">
               <div>
                 <div className="text-xs font-mono uppercase text-[#FF6B00] font-semibold">
                   CHART 01 // TRAJECTORY
                 </div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-tight mt-0.5">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-tight mt-0.5 font-heading">
                   Production Facility Growth & Procurement Flow
                 </h3>
               </div>
 
               {/* Metric Switcher */}
-              <div className="flex items-center gap-1 bg-[#090F16] p-1 rounded border border-[#1E2B3A] text-xs font-mono">
+              <div className="flex items-center gap-1 bg-slate-100 dark:bg-[#090F16] p-1 rounded border border-slate-300 dark:border-[#1E2B3A] text-xs font-mono">
                 <button
                   type="button"
                   onClick={() => setMetricTab('facilities')}
                   className={`px-3 py-1 rounded transition-colors cursor-pointer ${
                     metricTab === 'facilities'
                       ? 'bg-[#FF6B00] text-white font-bold'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   Facilities
@@ -162,7 +162,7 @@ export const ExhibitionInsights: React.FC = () => {
                   className={`px-3 py-1 rounded transition-colors cursor-pointer ${
                     metricTab === 'rfqs'
                       ? 'bg-[#FF6B00] text-white font-bold'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   Direct RFQs
@@ -173,7 +173,7 @@ export const ExhibitionInsights: React.FC = () => {
                   className={`px-3 py-1 rounded transition-colors cursor-pointer ${
                     metricTab === 'volume'
                       ? 'bg-[#FF6B00] text-white font-bold'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   Volume ($M)
@@ -238,12 +238,12 @@ export const ExhibitionInsights: React.FC = () => {
           </div>
 
           {/* Chart 2: Categories of Represented Manufacturing (4 Cols) */}
-          <div className="lg:col-span-4 bg-[#111A24] border border-[#223142] p-6 rounded-lg">
-            <div className="mb-4 pb-4 border-b border-[#1E293B]">
+          <div className="lg:col-span-4 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] p-6 rounded-lg shadow-2xs dark:shadow-none">
+            <div className="mb-4 pb-4 border-b border-slate-200 dark:border-[#1E293B]">
               <div className="text-xs font-mono uppercase text-[#FF6B00] font-semibold">
                 CHART 02 // SECTORS
               </div>
-              <h3 className="text-lg font-bold text-white uppercase tracking-tight mt-0.5">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-tight mt-0.5 font-heading">
                 Represented Manufacturing
               </h3>
             </div>
@@ -269,13 +269,13 @@ export const ExhibitionInsights: React.FC = () => {
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-2xl font-black font-mono text-white">100%</span>
-                <span className="text-[10px] font-mono text-slate-400 uppercase">AUDITED</span>
+                <span className="text-2xl font-black font-mono text-slate-900 dark:text-white font-heading">100%</span>
+                <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase font-semibold">AUDITED</span>
               </div>
             </div>
 
             {/* Category Breakdown Legend */}
-            <div className="space-y-2 mt-4 pt-3 border-t border-[#1C2836]">
+            <div className="space-y-2 mt-4 pt-3 border-t border-slate-200 dark:border-[#1C2836]">
               {CATEGORY_DISTRIBUTION_DATA.map((cat, idx) => (
                 <div key={idx} className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2 truncate max-w-[190px]">
@@ -283,10 +283,10 @@ export const ExhibitionInsights: React.FC = () => {
                       className="w-2 h-2 shrink-0 rounded-none"
                       style={{ backgroundColor: cat.color }}
                     />
-                    <span className="text-slate-300 truncate">{cat.name}</span>
+                    <span className="text-slate-700 dark:text-slate-300 truncate font-medium">{cat.name}</span>
                   </div>
-                  <div className="font-mono text-slate-200 tabular-nums font-semibold">
-                    {cat.value}% <span className="text-slate-500 font-normal">({cat.count})</span>
+                  <div className="font-mono text-slate-900 dark:text-slate-200 tabular-nums font-semibold">
+                    {cat.value}% <span className="text-slate-400 dark:text-slate-500 font-normal">({cat.count})</span>
                   </div>
                 </div>
               ))}
@@ -296,17 +296,17 @@ export const ExhibitionInsights: React.FC = () => {
         </div>
 
         {/* Global Reach Statistics Table & Bar Breakdown */}
-        <div className="bg-[#111A24] border border-[#223142] p-6 rounded-lg">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#1E293B]">
+        <div className="bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] p-6 rounded-lg shadow-2xs dark:shadow-none">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-[#1E293B]">
             <div>
               <div className="text-xs font-mono uppercase text-[#FF6B00] font-semibold">
                 CHART 03 // GLOBAL LOGISTICS & INBOUND
               </div>
-              <h3 className="text-lg font-bold text-white uppercase tracking-tight mt-0.5">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-tight mt-0.5 font-heading">
                 Global Procurement Reach by Industrial Region
               </h3>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400">
               <Globe2 className="w-4 h-4 text-[#FF6B00]" />
               <span>42 NATIONS ENGAGED</span>
             </div>
@@ -321,22 +321,22 @@ export const ExhibitionInsights: React.FC = () => {
                   data={GLOBAL_REACH_DATA}
                   margin={{ top: 0, right: 20, left: 10, bottom: 0 }}
                 >
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1E2A38" horizontal={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#94A3B8" opacity={0.25} horizontal={false} />
                   <XAxis
                     type="number"
                     stroke="#64748B"
-                    tick={{ fill: '#94A3B8', fontSize: 10, fontFamily: 'monospace' }}
+                    tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'monospace' }}
                     tickLine={false}
-                    axisLine={{ stroke: '#223142' }}
+                    axisLine={{ stroke: '#CBD5E1' }}
                   />
                   <YAxis
                     type="category"
                     dataKey="region"
                     stroke="#64748B"
                     width={130}
-                    tick={{ fill: '#E2E8F0', fontSize: 11 }}
+                    tick={{ fill: '#334155', fontSize: 11, fontWeight: 500 }}
                     tickLine={false}
-                    axisLine={{ stroke: '#223142' }}
+                    axisLine={{ stroke: '#CBD5E1' }}
                   />
                   <Tooltip content={<CustomChartTooltip />} />
                   <Bar
@@ -351,17 +351,17 @@ export const ExhibitionInsights: React.FC = () => {
 
             {/* Quantitative Region Breakdown Table */}
             <div className="lg:col-span-6">
-              <div className="divide-y divide-[#1C2836] font-mono text-xs">
+              <div className="divide-y divide-slate-200 dark:divide-[#1C2836] font-mono text-xs">
                 {GLOBAL_REACH_DATA.map((item, idx) => (
                   <div key={idx} className="py-2.5 flex items-center justify-between">
                     <div>
-                      <div className="text-white font-bold">{item.region}</div>
-                      <div className="text-[11px] text-slate-400">
+                      <div className="text-slate-900 dark:text-white font-bold">{item.region}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400">
                         {item.activeRFQs.toLocaleString()} Live Active RFQ Drawings
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-slate-200 font-semibold">{item.procurementOfficers.toLocaleString()} Officers</div>
+                      <div className="text-slate-700 dark:text-slate-200 font-semibold">{item.procurementOfficers.toLocaleString()} Officers</div>
                       <div className="text-[#FF6B00] font-bold">{item.share} Volume</div>
                     </div>
                   </div>

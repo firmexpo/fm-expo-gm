@@ -68,7 +68,7 @@ export const BrandKitStudio: React.FC = () => {
   };
 
   return (
-    <section id="brand-kit" className="w-full bg-[#0E1622] py-16 sm:py-20 border-b border-[#1E293B]">
+    <section id="brand-kit" className="w-full bg-slate-50 dark:bg-[#0E1622] py-16 sm:py-20 border-b border-slate-200 dark:border-[#1E293B] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -77,10 +77,10 @@ export const BrandKitStudio: React.FC = () => {
             <div className="text-xs font-mono uppercase tracking-widest text-[#FF6B00] mb-2 font-semibold">
               BRAND VISUAL ASSET STUDIO
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight uppercase font-heading">
               Social-Media-Ready Brand Visuals
             </h2>
-            <p className="mt-2 text-slate-300 max-w-2xl text-sm sm:text-base">
+            <p className="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
               The official FirmExpo brand visual formatted for LinkedIn, Instagram, advertising, and digital exhibition kiosks. Solid corporate colors, zero gradients, and high international credibility.
             </p>
           </div>
@@ -88,7 +88,7 @@ export const BrandKitStudio: React.FC = () => {
           <button
             type="button"
             onClick={handleDownload}
-            className="px-5 py-2.5 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider flex items-center gap-2 cursor-pointer shrink-0 self-start md:self-auto"
+            className="px-5 py-2.5 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider flex items-center gap-2 cursor-pointer shrink-0 self-start md:self-auto shadow-xs font-heading"
           >
             {downloadSuccess ? (
               <>
@@ -108,9 +108,9 @@ export const BrandKitStudio: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Visual Customizer Controls */}
-          <div className="lg:col-span-4 bg-[#111A24] border border-[#223142] p-6 rounded-lg space-y-6">
+          <div className="lg:col-span-4 bg-white dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] p-6 rounded-lg space-y-6 shadow-2xs dark:shadow-none">
             <div>
-              <label className="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-3 font-semibold">
+              <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3 font-semibold">
                 01. Format & Aspect Ratio
               </label>
               <div className="space-y-2">
@@ -123,13 +123,13 @@ export const BrandKitStudio: React.FC = () => {
                       onClick={() => setSelectedRatio(ratio.id)}
                       className={`w-full p-3 text-left rounded border transition-colors cursor-pointer flex items-center justify-between ${
                         isSelected
-                          ? 'bg-[#182432] border-[#FF6B00] text-white'
-                          : 'bg-[#0B1118] border-[#1E2A38] text-slate-300 hover:border-[#2C3E52]'
+                          ? 'bg-orange-50/70 dark:bg-[#182432] border-[#FF6B00] text-slate-900 dark:text-white font-bold'
+                          : 'bg-white dark:bg-[#0B1118] border-slate-200 dark:border-[#1E2A38] text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-[#2C3E52]'
                       }`}
                     >
                       <div>
                         <div className="text-xs font-bold uppercase">{ratio.label}</div>
-                        <div className="text-[11px] text-slate-400 mt-0.5">{ratio.sublabel}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{ratio.sublabel}</div>
                       </div>
                       <span className="text-[10px] font-mono text-[#FF6B00] tabular-nums font-semibold">
                         {ratio.dimensions}
@@ -141,27 +141,27 @@ export const BrandKitStudio: React.FC = () => {
             </div>
 
             {/* Typography Overlays */}
-            <div className="pt-4 border-t border-[#1C2836]">
-              <label className="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-3 font-semibold">
+            <div className="pt-4 border-t border-slate-200 dark:border-[#1C2836]">
+              <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3 font-semibold">
                 02. Brand Headline Inscription
               </label>
               <div className="space-y-2.5">
-                <label className="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer">
+                <label className="flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={showHeadline}
                     onChange={(e) => setShowHeadline(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#FF6B00] bg-[#0B1118] border-[#223142] focus:ring-0"
+                    className="w-4 h-4 rounded text-[#FF6B00] bg-white dark:bg-[#0B1118] border-slate-300 dark:border-[#223142] focus:ring-0"
                   />
                   <span>Headline: "YOUR BUSINESS ON DISPLAY."</span>
                 </label>
 
-                <label className="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer">
+                <label className="flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={showSupportingLine}
                     onChange={(e) => setShowSupportingLine(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#FF6B00] bg-[#0B1118] border-[#223142] focus:ring-0"
+                    className="w-4 h-4 rounded text-[#FF6B00] bg-white dark:bg-[#0B1118] border-slate-300 dark:border-[#223142] focus:ring-0"
                   />
                   <span>Supporting: "The digital stage for production businesses."</span>
                 </label>
@@ -169,8 +169,8 @@ export const BrandKitStudio: React.FC = () => {
             </div>
 
             {/* Logo Placement */}
-            <div className="pt-4 border-t border-[#1C2836]">
-              <label className="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-3 font-semibold">
+            <div className="pt-4 border-t border-slate-200 dark:border-[#1C2836]">
+              <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-3 font-semibold">
                 03. Official Logo Placement
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -182,7 +182,7 @@ export const BrandKitStudio: React.FC = () => {
                     className={`py-2 px-1 text-[11px] font-mono uppercase rounded border transition-colors cursor-pointer text-center ${
                       logoPosition === pos
                         ? 'bg-[#FF6B00] text-white border-[#FF6B00] font-bold'
-                        : 'bg-[#0B1118] text-slate-400 border-[#1E2A38] hover:text-white'
+                        : 'bg-white dark:bg-[#0B1118] text-slate-600 dark:text-slate-400 border-slate-300 dark:border-[#1E2A38] hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {pos.replace('-', ' ')}
@@ -195,10 +195,10 @@ export const BrandKitStudio: React.FC = () => {
             </div>
 
             {/* Color Standards Info */}
-            <div className="pt-4 border-t border-[#1C2836] text-[11px] font-mono text-slate-400 space-y-1">
+            <div className="pt-4 border-t border-slate-200 dark:border-[#1C2836] text-[11px] font-mono text-slate-500 dark:text-slate-400 space-y-1">
               <div className="flex items-center justify-between">
                 <span>CANVAS DEEP NAVY:</span>
-                <span className="text-white font-bold">#0B1118</span>
+                <span className="text-slate-900 dark:text-white font-bold">#0B1118</span>
               </div>
               <div className="flex items-center justify-between">
                 <span>INDUSTRIAL ACCENT:</span>
@@ -206,13 +206,13 @@ export const BrandKitStudio: React.FC = () => {
               </div>
               <div className="flex items-center justify-between">
                 <span>GRADIENT STATUS:</span>
-                <span className="text-slate-300 font-bold">0% (PURE SOLID)</span>
+                <span className="text-slate-700 dark:text-slate-300 font-bold">0% (PURE SOLID)</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Live Responsive Canvas Stage */}
-          <div className="lg:col-span-8 flex flex-col items-center justify-center bg-[#090F16] border border-[#202E3E] p-4 sm:p-8 rounded-lg min-h-[520px]">
+          <div className="lg:col-span-8 flex flex-col items-center justify-center bg-slate-900 border border-slate-700 dark:border-[#202E3E] p-4 sm:p-8 rounded-lg min-h-[520px] shadow-xl">
             
             <div
               ref={previewRef}

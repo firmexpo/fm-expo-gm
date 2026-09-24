@@ -383,9 +383,9 @@ export const Stage3DCanvas: React.FC<Stage3DProps> = ({
           }
           curr = curr.parent;
         }
-        setHoveredObject(foundBooth);
+        setHoveredObject((prev) => (prev !== foundBooth ? foundBooth : prev));
       } else {
-        setHoveredObject(null);
+        setHoveredObject((prev) => (prev !== null ? null : prev));
       }
     };
 

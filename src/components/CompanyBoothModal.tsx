@@ -30,17 +30,17 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6">
-      <div className="relative w-full max-w-5xl bg-[#0E1622] border border-[#223142] rounded-lg shadow-2xl text-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 dark:bg-black/85 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 transition-colors">
+      <div className="relative w-full max-w-5xl bg-white dark:bg-[#0E1622] border border-slate-300 dark:border-[#223142] rounded-lg shadow-2xl text-slate-800 dark:text-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#090F16] border-b border-[#202E3E]">
+        <div className="flex items-center justify-between px-6 py-4 bg-slate-100 dark:bg-[#090F16] border-b border-slate-200 dark:border-[#202E3E]">
           <div className="flex items-center gap-3">
             <span className="text-xs font-mono text-[#FF6B00] font-semibold tracking-wider uppercase">
               DIGITAL EXHIBITION BOOTH #{company.id.toUpperCase()}
             </span>
-            <span className="text-slate-500">|</span>
-            <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+            <span className="text-slate-400 dark:text-slate-500">|</span>
+            <span className="text-xs text-slate-600 dark:text-slate-400 font-mono hidden sm:inline">
               FIRMEXPO CONVENTIONAL PLATFORM
             </span>
           </div>
@@ -48,7 +48,7 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white hover:bg-[#1E293B] rounded transition-colors cursor-pointer"
+            className="p-1.5 text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#1E293B] rounded transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -59,10 +59,10 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
         <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
           
           {/* Company Header Block */}
-          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-[#1E2A3A]">
+          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-slate-200 dark:border-[#1E2A3A]">
             <div>
               {/* Unboxed Metadata Line */}
-              <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-400 mb-2">
+              <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-2">
                 <span className="text-[#FF6B00] font-bold">{company.sector}</span>
                 <span aria-hidden="true">·</span>
                 <span>{company.location}</span>
@@ -72,21 +72,21 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                 <span>Est. {company.established}</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight font-heading">
                 {company.name}
               </h2>
-              <p className="text-sm font-medium text-slate-300 mt-1">
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-300 mt-1">
                 {company.tagline}
               </p>
             </div>
 
             {/* Certifications Box */}
-            <div className="bg-[#121B26] border border-[#223142] p-3.5 rounded text-xs font-mono shrink-0">
+            <div className="bg-slate-100 dark:bg-[#121B26] border border-slate-300 dark:border-[#223142] p-3.5 rounded text-xs font-mono shrink-0">
               <div className="text-[#FF6B00] font-semibold mb-1 flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#FF6B00]" />
                 AUDITED CERTIFICATIONS
               </div>
-              <div className="text-slate-300 space-y-0.5">
+              <div className="text-slate-700 dark:text-slate-300 space-y-0.5">
                 {company.certifications.map((c, i) => (
                   <div key={i}>✓ {c}</div>
                 ))}
@@ -97,7 +97,7 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
           {/* Standardized 800x600 Stage Showcase Section */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-7">
-              <div className="p-2 bg-[#090F16] border border-[#202E3E] rounded">
+              <div className="p-2 bg-slate-900 border border-slate-700 dark:border-[#202E3E] rounded">
                 <DummyImage800x600
                   title={company.name}
                   subtitle={`${company.sector} // MACHINE PARK ACTIVE`}
@@ -106,7 +106,7 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                   showToggle={true}
                 />
               </div>
-              <div className="mt-2 text-xs font-mono text-slate-400 flex items-center justify-between px-1">
+              <div className="mt-2 text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center justify-between px-1">
                 <span>LAYOUT SPEC: 800 × 600 PIXEL VIEWPORT</span>
                 <span>TOLERANCE: {company.capabilities[0]?.metric || '±0.002 MM'}</span>
               </div>
@@ -115,30 +115,30 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
             {/* Overview & Engineering Ambition */}
             <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-5">
               <div>
-                <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">
+                <h4 className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-semibold">
                   Company Mission & Capabilities
                 </h4>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {company.overview}
                 </p>
               </div>
 
-              <div className="p-4 bg-[#14202E] border-l-2 border-[#FF6B00] border-y border-r border-[#223142] rounded-r">
+              <div className="p-4 bg-orange-50/70 dark:bg-[#14202E] border-l-2 border-[#FF6B00] border-y border-r border-orange-200/80 dark:border-[#223142] rounded-r">
                 <div className="text-xs font-mono text-[#FF6B00] font-semibold mb-1 uppercase">
                   Manufacturing Ambition
                 </div>
-                <p className="text-xs text-slate-200 leading-relaxed">
+                <p className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed">
                   {company.ambition}
                 </p>
               </div>
 
               <div className="pt-2">
-                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">
+                <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-semibold">
                   Active Machine Park
                 </div>
                 <div className="space-y-1.5">
                   {company.equipment.map((eq, i) => (
-                    <div key={i} className="text-xs text-slate-300 flex items-center gap-2 font-mono">
+                    <div key={i} className="text-xs text-slate-700 dark:text-slate-300 flex items-center gap-2 font-mono">
                       <span className="w-1.5 h-1.5 bg-[#FF6B00] rounded-none shrink-0" />
                       <span>{eq}</span>
                     </div>
@@ -209,19 +209,19 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
           </div>
 
           {/* Technical RFQ / Direct Inquiry Form */}
-          <div className="bg-[#111A24] border border-[#223142] p-6 rounded-lg">
-            <h3 className="text-base font-bold text-white uppercase tracking-tight mb-1 flex items-center gap-2">
+          <div className="bg-slate-100 dark:bg-[#111A24] border border-slate-200 dark:border-[#223142] p-6 rounded-lg shadow-2xs dark:shadow-none">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white uppercase tracking-tight mb-1 flex items-center gap-2 font-heading">
               <Send className="w-4 h-4 text-[#FF6B00]" />
               <span>Direct Engineering RFQ Channel</span>
             </h3>
-            <p className="text-xs text-slate-400 mb-5">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-5">
               Submit your RFQ specifications directly to {company.name}'s chief estimator without intermediary commissions.
             </p>
 
             {rfqSubmitted ? (
-              <div className="p-4 bg-[#0F2018] border border-[#1E4D2B] rounded text-emerald-300 text-xs">
+              <div className="p-4 bg-emerald-50 dark:bg-[#0F2018] border border-emerald-300 dark:border-[#1E4D2B] rounded text-emerald-800 dark:text-emerald-300 text-xs">
                 <div className="font-bold text-sm mb-1 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   RFQ Inbound Dispatched to Engineering Team
                 </div>
                 Your request for quotation has been delivered to {company.name}. The estimation desk responds within 24 business hours. A confirmation was sent to {formData.buyerEmail}.
@@ -230,7 +230,7 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
               <form onSubmit={handleSubmitRfq} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">
+                    <label className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">
                       Contact Name *
                     </label>
                     <input
@@ -239,11 +239,11 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                       value={formData.buyerName}
                       onChange={(e) => setFormData({ ...formData, buyerName: e.target.value })}
                       placeholder="e.g. Sarah Jenkins (Procurement Mgr)"
-                      className="w-full px-3 py-2 text-xs text-white bg-[#0B1118] border border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
+                      className="w-full px-3 py-2 text-xs text-slate-900 dark:text-white bg-white dark:bg-[#0B1118] border border-slate-300 dark:border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">
+                    <label className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">
                       Business Email *
                     </label>
                     <input
@@ -252,14 +252,14 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                       value={formData.buyerEmail}
                       onChange={(e) => setFormData({ ...formData, buyerEmail: e.target.value })}
                       placeholder="s.jenkins@aerodyne.com"
-                      className="w-full px-3 py-2 text-xs text-white bg-[#0B1118] border border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
+                      className="w-full px-3 py-2 text-xs text-slate-900 dark:text-white bg-white dark:bg-[#0B1118] border border-slate-300 dark:border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">
+                    <label className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">
                       Component Name / Part #
                     </label>
                     <input
@@ -267,11 +267,11 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                       value={formData.partNumber}
                       onChange={(e) => setFormData({ ...formData, partNumber: e.target.value })}
                       placeholder="e.g. Turbine Impeller A-402"
-                      className="w-full px-3 py-2 text-xs text-white bg-[#0B1118] border border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
+                      className="w-full px-3 py-2 text-xs text-slate-900 dark:text-white bg-white dark:bg-[#0B1118] border border-slate-300 dark:border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">
+                    <label className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">
                       Alloy / Material
                     </label>
                     <input
@@ -279,11 +279,11 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                       value={formData.materialSpec}
                       onChange={(e) => setFormData({ ...formData, materialSpec: e.target.value })}
                       placeholder="e.g. Titanium Gr 5 / 316L"
-                      className="w-full px-3 py-2 text-xs text-white bg-[#0B1118] border border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
+                      className="w-full px-3 py-2 text-xs text-slate-900 dark:text-white bg-white dark:bg-[#0B1118] border border-slate-300 dark:border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">
+                    <label className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">
                       Estimated Batch Qty
                     </label>
                     <input
@@ -291,13 +291,13 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                       value={formData.estimatedQuantity}
                       onChange={(e) => setFormData({ ...formData, estimatedQuantity: e.target.value })}
                       placeholder="e.g. 500 pcs/year"
-                      className="w-full px-3 py-2 text-xs text-white bg-[#0B1118] border border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
+                      className="w-full px-3 py-2 text-xs text-slate-900 dark:text-white bg-white dark:bg-[#0B1118] border border-slate-300 dark:border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 mb-1">
+                  <label className="block text-xs font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">
                     Technical Scope & Drawing Specs
                   </label>
                   <textarea
@@ -305,7 +305,7 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     placeholder="Provide tolerance constraints, delivery timeframe, or CAD transfer link..."
-                    className="w-full px-3 py-2 text-xs text-white bg-[#0B1118] border border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
+                    className="w-full px-3 py-2 text-xs text-slate-900 dark:text-white bg-white dark:bg-[#0B1118] border border-slate-300 dark:border-[#223142] rounded focus:outline-none focus:border-[#FF6B00]"
                   />
                 </div>
 
@@ -313,13 +313,13 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
                   <button
                     type="button"
                     onClick={onClose}
-                    className="px-4 py-2 text-xs font-mono text-slate-300 hover:text-white bg-[#16212E] rounded cursor-pointer"
+                    className="px-4 py-2 text-xs font-mono text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white bg-slate-200 dark:bg-[#16212E] hover:bg-slate-300 dark:hover:bg-[#202E3E] rounded cursor-pointer transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider cursor-pointer"
+                    className="px-5 py-2 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider cursor-pointer shadow-xs font-heading"
                   >
                     Transmit RFQ to Facility
                   </button>

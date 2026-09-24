@@ -58,7 +58,7 @@ export const BlueprintSpecsSection: React.FC = () => {
   const activeItem = BLUEPRINT_ITEMS[selectedItemIndex];
 
   return (
-    <section id="blueprint-specs" className="w-full bg-[#0B1118] py-16 sm:py-20 border-b border-[#1E293B]">
+    <section id="blueprint-specs" className="w-full bg-white dark:bg-[#0B1118] py-16 sm:py-20 border-b border-slate-200 dark:border-[#1E293B] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -67,15 +67,15 @@ export const BlueprintSpecsSection: React.FC = () => {
             <div className="text-xs font-mono uppercase tracking-widest text-[#FF6B00] mb-2 font-semibold">
               LAYOUT STANDARDIZATION ARCHITECTURE
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight uppercase">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight uppercase font-heading">
               The 800 × 600 Layout Standard
             </h2>
-            <p className="mt-2 text-slate-300 max-w-2xl text-sm sm:text-base">
+            <p className="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
               Consistent dummy size images maintain flawless layout proportions across all manufacturing sectors. Every machine, tool, component, and schematic shares an authoritative 4:3 canvas.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400 bg-[#111A24] border border-[#223142] px-4 py-2 rounded shrink-0">
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-[#111A24] border border-slate-300 dark:border-[#223142] px-4 py-2 rounded shrink-0">
             <Ruler className="w-4 h-4 text-[#FF6B00]" />
             <span>UNIFORM RATIO: 800PX WIDTH × 600PX HEIGHT</span>
           </div>
@@ -95,23 +95,23 @@ export const BlueprintSpecsSection: React.FC = () => {
                   onClick={() => setSelectedItemIndex(idx)}
                   className={`w-full p-4 text-left rounded border transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-[#14202D] border-[#FF6B00] text-white shadow-none'
-                      : 'bg-[#111A24] border-[#1E2A38] text-slate-400 hover:text-slate-200 hover:border-[#2C3E52]'
+                      ? 'bg-slate-100 dark:bg-[#14202D] border-[#FF6B00] text-slate-950 dark:text-white shadow-2xs'
+                      : 'bg-white dark:bg-[#111A24] border-slate-200 dark:border-[#1E2A38] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-[#2C3E52]'
                   }`}
                 >
                   <div className="flex items-center justify-between text-xs font-mono mb-1">
                     <span className={isSelected ? 'text-[#FF6B00] font-bold' : 'text-slate-500'}>
                       {item.category}
                     </span>
-                    <span className="tabular-nums text-slate-400">{item.aspect}</span>
+                    <span className="tabular-nums text-slate-500 dark:text-slate-400">{item.aspect}</span>
                   </div>
-                  <div className="text-sm font-bold text-white">{item.title}</div>
-                  <div className="mt-2 text-xs text-slate-400 line-clamp-2">
+                  <div className="text-sm font-bold text-slate-900 dark:text-white font-heading">{item.title}</div>
+                  <div className="mt-2 text-xs text-slate-600 dark:text-slate-400 line-clamp-2">
                     {item.description}
                   </div>
-                  <div className="mt-3 pt-2.5 border-t border-[#1C2836] flex items-center justify-between text-[11px] font-mono">
-                    <span className="text-slate-400">Tolerance: {item.tolerance}</span>
-                    <span className="text-slate-300 font-semibold">{item.material.split('/')[0]}</span>
+                  <div className="mt-3 pt-2.5 border-t border-slate-200 dark:border-[#1C2836] flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-slate-500 dark:text-slate-400">Tolerance: {item.tolerance}</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-semibold">{item.material.split('/')[0]}</span>
                   </div>
                 </button>
               );
@@ -119,10 +119,10 @@ export const BlueprintSpecsSection: React.FC = () => {
           </div>
 
           {/* Right Column: Live 800x600 Blueprint Display */}
-          <div className="lg:col-span-7 bg-[#111A24] border border-[#223142] p-6 rounded-lg">
+          <div className="lg:col-span-7 bg-slate-900 border border-slate-700 dark:border-[#223142] p-6 rounded-lg shadow-xl">
             
             {/* Visual Header */}
-            <div className="flex items-center justify-between text-xs font-mono pb-4 mb-4 border-b border-[#1C2836]">
+            <div className="flex items-center justify-between text-xs font-mono pb-4 mb-4 border-b border-slate-700 dark:border-[#1C2836]">
               <span className="text-white font-bold flex items-center gap-2">
                 <Layers className="w-4 h-4 text-[#FF6B00]" />
                 {activeItem.title}

@@ -118,32 +118,39 @@ const BoothMesh: React.FC<BoothMeshProps> = ({
   const screenBackdrop = isSelected ? '#FF6B00' : isHovered ? '#1B2B3E' : '#0B1118';
 
   return (
-    <group
-      ref={groupRef}
-      position={booth.position}
-      rotation={[0, booth.rotationY, 0]}
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        onHover(true);
-      }}
-      onPointerOut={(e) => {
-        e.stopPropagation();
-        onHover(false);
-      }}
-      onClick={(e) => {
-        e.stopPropagation();
-        onSelect();
-      }}
-    >
-      {/* 800x600 Ratio Physical Stage Platform (4.0m x 3.0m) */}
-      <mesh position={[0, 0.15, 0]} castShadow receiveShadow>
-        <boxGeometry args={[4.0, 0.3, 3.0]} />
-        <meshStandardMaterial
-          color={baseColor}
-          metalness={0.7}
-          roughness={0.25}
-        />
+    <group position={booth.position} rotation={[0, booth.rotationY, 0]}>
+      {/* Invisible static hit target mesh: prevents oscillating onPointerOver/onPointerOut when the model lifts */}
+      <mesh
+        position={[0, 1.5, 0]}
+        visible={false}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          onHover(true);
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          onHover(false);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onSelect();
+        }}
+      >
+        <boxGeometry args={[4.4, 3.6, 3.4]} />
+        <meshBasicMaterial transparent opacity={0} />
       </mesh>
+
+      {/* Visual Model that animates up/down */}
+      <group ref={groupRef}>
+        {/* 800x600 Ratio Physical Stage Platform (4.0m x 3.0m) */}
+        <mesh position={[0, 0.15, 0]} castShadow receiveShadow>
+          <boxGeometry args={[4.0, 0.3, 3.0]} />
+          <meshStandardMaterial
+            color={baseColor}
+            metalness={0.7}
+            roughness={0.25}
+          />
+        </mesh>
 
       {/* Platform Highlight Perimeter Line */}
       <lineSegments position={[0, 0.301, 0]}>
@@ -174,7 +181,6 @@ const BoothMesh: React.FC<BoothMeshProps> = ({
         color={isHovered || isSelected ? '#FFFFFF' : '#94A3B8'}
         anchorX="center"
         anchorY="middle"
-        font="https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2"
       >
         {booth.name.toUpperCase()}
       </Text>
@@ -248,6 +254,7 @@ const BoothMesh: React.FC<BoothMeshProps> = ({
           color="#FF6B00"
         />
       )}
+      </group>
     </group>
   );
 };
@@ -334,12 +341,23 @@ export const InteractiveStage: React.FC<InteractiveStageProps> = ({
   const activeBooth =
     DEFAULT_BOOTHS.find((b) => b.id === (hoveredBoothId || selectedBoothId)) || DEFAULT_BOOTHS[0];
 
-  const handleSelect = (booth: BoothPlaceholder) => {
-    setSelectedBoothId(booth.id);
-    if (onSelectBooth) {
-      onSelectBooth(booth);
-    }
-  };
+  const handleHover = React.useCallback((id: string, hovered: boolean) => {
+    setHoveredBoothId((prev) => {
+      if (hovered && prev !== id) return id;
+      if (!hovered && prev === id) return null;
+      return prev;
+    });
+  }, []);
+
+  const handleSelect = React.useCallback(
+    (booth: BoothPlaceholder) => {
+      setSelectedBoothId(booth.id);
+      if (onSelectBooth) {
+        onSelectBooth(booth);
+      }
+    },
+    [onSelectBooth]
+  );
 
   return (
     <div className={`relative w-full aspect-[16/9] min-h-[460px] sm:min-h-[560px] bg-[#080D14] border border-[#223142] rounded-lg overflow-hidden select-none ${className}`}>
@@ -373,7 +391,7 @@ export const InteractiveStage: React.FC<InteractiveStageProps> = ({
             booth={booth}
             isHovered={hoveredBoothId === booth.id}
             isSelected={selectedBoothId === booth.id}
-            onHover={(hovered) => setHoveredBoothId(hovered ? booth.id : null)}
+            onHover={(hovered) => handleHover(booth.id, hovered)}
             onSelect={() => handleSelect(booth)}
           />
         ))}
