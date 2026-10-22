@@ -12,12 +12,17 @@ import { BrandKitStudio } from './components/BrandKitStudio';
 import { RegisterBoothSection } from './components/RegisterBoothSection';
 import { Footer } from './components/Footer';
 import { CompanyBoothModal } from './components/CompanyBoothModal';
+import { ExpoConventionHall } from './components/ExpoConventionHall';
 import { PRODUCTION_COMPANIES, ProductionCompany } from './data/companies';
 
 export default function App() {
   const [selectedCompany, setSelectedCompany] = useState<ProductionCompany | null>(null);
+  const [isExpoOpen, setIsExpoOpen] = useState(false);
 
   const handleNavigate = (sectionId: string) => {
+    if (isExpoOpen) {
+      setIsExpoOpen(false);
+    }
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -25,11 +30,15 @@ export default function App() {
   };
 
   const handleOpenRegister = () => {
+    if (isExpoOpen) {
+      setIsExpoOpen(false);
+    }
     handleNavigate('register-booth');
   };
 
   const handleOpenDemoExhibition = () => {
-    handleNavigate('exhibition-halls');
+    setIsExpoOpen(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectBoothDetail = (companyId: string) => {
@@ -40,6 +49,16 @@ export default function App() {
       handleNavigate('exhibition-halls');
     }
   };
+
+  if (isExpoOpen) {
+    return (
+      <div className="min-h-screen bg-[#04070D] text-[#E2E8F0] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white">
+        <ExpoConventionHall
+          onExit={() => setIsExpoOpen(false)}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0B1118] text-[#E2E8F0] flex flex-col font-sans selection:bg-[#FF6B00] selection:text-white">
@@ -80,6 +99,7 @@ export default function App() {
         <ExhibitionHalls
           onSelectCompany={(company) => setSelectedCompany(company)}
           onOpenRegister={handleOpenRegister}
+          onOpenDemoExhibition={handleOpenDemoExhibition}
         />
 
         {/* Blueprint & 800x600 Dimensional Layout Architecture */}

@@ -9,6 +9,7 @@ import hallPhotoPath from '../assets/images/firmexpo_exhibition_hall_17902768617
 interface ExhibitionHallsProps {
   onSelectCompany: (company: ProductionCompany) => void;
   onOpenRegister: () => void;
+  onOpenDemoExhibition?: () => void;
 }
 
 const SECTORS = [
@@ -24,6 +25,7 @@ const SECTORS = [
 export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
   onSelectCompany,
   onOpenRegister,
+  onOpenDemoExhibition,
 }) => {
   const [selectedSector, setSelectedSector] = useState<string>('All Sectors');
   const [searchQuery, setSearchQuery] = useState('');
@@ -90,13 +92,26 @@ export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
               </button>
             </div>
 
-            <a
-              href="/demo/nova-precision"
-              className="px-4 py-2 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
-            >
-              <span>Demo Exhibition (NovaPrecision)</span>
-              <span aria-hidden="true">↗</span>
-            </a>
+            {onOpenDemoExhibition ? (
+              <button
+                type="button"
+                onClick={onOpenDemoExhibition}
+                className="px-4 py-2 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider flex items-center gap-1.5 shadow-sm cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span>Enter Demo Expo (Booth #A-104)</span>
+                <span aria-hidden="true">↗</span>
+              </button>
+            ) : (
+              <a
+                href="/demo/nova-precision"
+                className="px-4 py-2 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
+              >
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span>Enter Demo Expo (Booth #A-104)</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            )}
 
             <button
               type="button"
