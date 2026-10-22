@@ -430,7 +430,7 @@ export const Stage3DCanvas: React.FC<Stage3DProps> = ({
 
     // 10. Animation Loop
     let animId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animId = requestAnimationFrame(animate);

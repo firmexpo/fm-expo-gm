@@ -108,7 +108,7 @@ export default function Hero() {
         </div>
 
         <button className="rounded-full border border-white/20 px-5 py-2 text-sm transition hover:bg-white hover:text-black">
-          Let's Talk
+          Let&apos;s Talk
         </button>
 
       </nav>

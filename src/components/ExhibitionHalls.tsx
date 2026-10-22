@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Filter, Search, Building2, MapPin, Award, ExternalLink, ChevronRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Search, Building2, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { PRODUCTION_COMPANIES, ProductionCompany } from '../data/companies';
 import { DummyImage800x600 } from './DummyImage800x600';
 import cncPhotoPath from '../assets/images/firmexpo_cnc_precision_1790276873230.jpg';
@@ -90,10 +90,18 @@ export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
               </button>
             </div>
 
+            <a
+              href="/demo/nova-precision"
+              className="px-4 py-2 text-xs font-bold text-white bg-[#FF6B00] hover:bg-[#E55F00] rounded transition-colors uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
+            >
+              <span>Demo Exhibition (NovaPrecision)</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
             <button
               type="button"
               onClick={onOpenRegister}
-              className="px-4 py-2 text-xs font-bold text-white bg-[#172230] hover:bg-[#1E2D3E] border border-[#2A3C4F] rounded transition-colors uppercase tracking-wider cursor-pointer"
+              className="px-4 py-2 text-xs font-bold text-slate-300 hover:text-white bg-[#172230] hover:bg-[#1E2D3E] border border-[#2A3C4F] rounded transition-colors uppercase tracking-wider cursor-pointer"
             >
               Add Your Facility
             </button>
@@ -234,7 +242,7 @@ export const ExhibitionHalls: React.FC<ExhibitionHallsProps> = ({
             <Building2 className="w-10 h-10 text-slate-500 mx-auto mb-3" />
             <div className="text-base font-bold text-white">No Production Facilities Found</div>
             <div className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
-              We couldn't find matches for "{searchQuery}". Try browsing by another manufacturing sector or reset your search.
+              We couldn&apos;t find matches for &ldquo;{searchQuery}&rdquo;. Try browsing by another manufacturing sector or reset your search.
             </div>
             <button
               type="button"

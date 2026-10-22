@@ -215,7 +215,7 @@ export const CompanyBoothModal: React.FC<CompanyBoothModalProps> = ({ company, o
               <span>Direct Engineering RFQ Channel</span>
             </h3>
             <p className="text-xs text-slate-400 mb-5">
-              Submit your RFQ specifications directly to {company.name}'s chief estimator without intermediary commissions.
+              Submit your RFQ specifications directly to {company.name}&apos;s chief estimator without intermediary commissions.
             </p>
 
             {rfqSubmitted ? (

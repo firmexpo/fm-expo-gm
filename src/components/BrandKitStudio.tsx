@@ -53,11 +53,12 @@ export const BrandKitStudio: React.FC = () => {
   const previewRef = useRef<HTMLDivElement>(null);
 
   const activeRatioConfig = RATIOS.find((r) => r.id === selectedRatio)!;
+  const heroVisualUrl = typeof heroVisualPath === 'object' && heroVisualPath !== null ? (heroVisualPath as { src: string }).src : String(heroVisualPath);
 
   const handleDownload = () => {
     // Direct download of the high-res master brand asset
     const link = document.createElement('a');
-    link.href = heroVisualPath;
+    link.href = heroVisualUrl;
     link.download = `FirmExpo_Brand_Visual_${selectedRatio.replace(':', '_')}.jpg`;
     document.body.appendChild(link);
     link.click();
@@ -153,7 +154,7 @@ export const BrandKitStudio: React.FC = () => {
                     onChange={(e) => setShowHeadline(e.target.checked)}
                     className="w-4 h-4 rounded text-[#FF6B00] bg-[#0B1118] border-[#223142] focus:ring-0"
                   />
-                  <span>Headline: "YOUR BUSINESS ON DISPLAY."</span>
+                  <span>Headline: &quot;YOUR BUSINESS ON DISPLAY.&quot;</span>
                 </label>
 
                 <label className="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer">
@@ -163,7 +164,7 @@ export const BrandKitStudio: React.FC = () => {
                     onChange={(e) => setShowSupportingLine(e.target.checked)}
                     className="w-4 h-4 rounded text-[#FF6B00] bg-[#0B1118] border-[#223142] focus:ring-0"
                   />
-                  <span>Supporting: "The digital stage for production businesses."</span>
+                  <span>Supporting: &quot;The digital stage for production businesses.&quot;</span>
                 </label>
               </div>
             </div>
@@ -220,7 +221,7 @@ export const BrandKitStudio: React.FC = () => {
             >
               {/* Master Photograph */}
               <img
-                src={heroVisualPath}
+                src={heroVisualUrl}
                 alt="FirmExpo Master Brand Campaign Visual"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"

@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { InteractiveStage } from './components/InteractiveStage';
 import { HeroSection } from './components/HeroSection';
 import { VisualJourney } from './components/VisualJourney';
 import { ExhibitionHalls } from './components/ExhibitionHalls';
@@ -25,6 +28,10 @@ export default function App() {
     handleNavigate('register-booth');
   };
 
+  const handleOpenDemoExhibition = () => {
+    handleNavigate('exhibition-halls');
+  };
+
   const handleSelectBoothDetail = (companyId: string) => {
     const found = PRODUCTION_COMPANIES.find((c) => c.id === companyId);
     if (found) {
@@ -40,12 +47,27 @@ export default function App() {
       <Navbar
         onNavigate={handleNavigate}
         onOpenRegister={handleOpenRegister}
+        onOpenDemoExhibition={handleOpenDemoExhibition}
       />
 
       <main className="flex-1">
-        {/* Master Stage Hero: "YOUR BUSINESS ON DISPLAY" */}
+        {/* Top 3D Exhibition Stage - Exactly matching reference image */}
+        <section id="stage-3d" className="relative w-full bg-[#04070D] border-b border-[#1E293B] overflow-hidden">
+          <InteractiveStage
+            onSelectBooth={(booth) => {
+              if (booth.companyId) {
+                handleSelectBoothDetail(booth.companyId);
+              } else {
+                handleNavigate('exhibition-halls');
+              }
+            }}
+            onExploreDemo={handleOpenDemoExhibition}
+          />
+        </section>
+
+        {/* Master Stage Hero: "YOUR BUSINESS ON DISPLAY" & afterwards all things displayed */}
         <HeroSection
-          onExploreBooths={() => handleNavigate('exhibition-halls')}
+          onExploreBooths={handleOpenDemoExhibition}
           onRegisterClick={handleOpenRegister}
           onOpenBrandKit={() => handleNavigate('brand-kit')}
           onSelectBoothDetail={handleSelectBoothDetail}

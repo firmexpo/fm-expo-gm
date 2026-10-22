@@ -20,7 +20,7 @@ function VideoPanel({
         <div>
           <h2>{title}</h2>
           <p>{description}</p>
-          <p>Video placeholder — add the company's approved video URL.</p>
+          <p>Video placeholder — add the company&apos;s approved video URL.</p>
         </div>
       </div>
     );

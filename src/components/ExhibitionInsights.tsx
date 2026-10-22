@@ -12,9 +12,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
 } from 'recharts';
-import { TrendingUp, Globe2, Layers, ShieldCheck, Factory, ArrowUpRight, BarChart3, Users } from 'lucide-react';
+import { Globe2, ShieldCheck } from 'lucide-react';
 
 // 1. Participation Growth Data (Production Businesses Staged over Time)
 const PARTICIPATION_GROWTH_DATA = [
@@ -49,9 +48,16 @@ const GLOBAL_REACH_DATA = [
   { region: 'Australia & Others', procurementOfficers: 1080, activeRFQs: 610, share: '9%' },
 ];
 
+interface TooltipPayloadEntry {
+  name: string;
+  value: number | string;
+  color?: string;
+  unit?: string;
+}
+
 interface CustomTooltipProps {
   active?: boolean;
-  payload?: any[];
+  payload?: TooltipPayloadEntry[];
   label?: string;
 }
 
@@ -62,7 +68,7 @@ const CustomChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, lab
         <div className="text-white font-bold mb-1.5 pb-1 border-b border-[#1E293B]">
           {label}
         </div>
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry: TooltipPayloadEntry, index: number) => (
           <div key={`item-${index}`} className="flex items-center justify-between gap-4 py-0.5">
             <span style={{ color: entry.color || '#FF6B00' }}>{entry.name}:</span>
             <span className="text-slate-200 font-bold tabular-nums">

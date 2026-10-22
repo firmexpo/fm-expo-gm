@@ -5,7 +5,7 @@ interface DummyImage800x600Props {
   title?: string;
   subtitle?: string;
   sector?: string;
-  imageSrc?: string;
+  imageSrc?: string | { src: string };
   aspectRatioClass?: string;
   showToggle?: boolean;
   className?: string;
@@ -24,6 +24,7 @@ export const DummyImage800x600: React.FC<DummyImage800x600Props> = ({
 }) => {
   const [viewMode, setViewMode] = useState<'dummy' | 'stage'>('dummy');
   const [imageError, setImageError] = useState(false);
+  const resolvedSrc = typeof imageSrc === 'object' && imageSrc !== null ? imageSrc.src : imageSrc;
 
   return (
     <div
@@ -77,7 +78,7 @@ export const DummyImage800x600: React.FC<DummyImage800x600Props> = ({
         /* 2. PHOTOGRAPHIC DIGITAL STAGE VIEW */
         <div className="absolute inset-0">
           <img
-            src={imageSrc}
+            src={resolvedSrc}
             alt={title}
             referrerPolicy="no-referrer"
             onError={() => setImageError(true)}

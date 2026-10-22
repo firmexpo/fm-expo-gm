@@ -312,7 +312,7 @@ export default function GoLivePage() {
 
       <section className={styles.enquirySection} id="enquiry">
         <div className={styles.enquiryIntro}>
-          <p className={styles.sectionKicker}>LET'S TALK BUSINESS</p>
+          <p className={styles.sectionKicker}>LET&apos;S TALK BUSINESS</p>
           <h2>
             Tell us what
             <br />
@@ -468,7 +468,7 @@ export default function GoLivePage() {
 
             <p className={styles.sectionKicker}>CONNECT WITH THE COMPANY</p>
             <h2 id="connectModalTitle">
-              Let's get your
+              Let&apos;s get your
               <br />
               question answered.
             </h2>
